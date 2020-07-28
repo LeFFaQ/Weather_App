@@ -9,10 +9,11 @@ import retrofit2.http.Query;
 
 public interface OpenWeatherApi {
 
-    @GET("/weather")
-    public Call<Current> getCurrent(@Query("lat")Double lat,
-                                    @Query("lon")Double lon,
-                                    @Query("appid")String Api_key);
+    @GET("/data/2.5/weather")
+    public Call<Current> getCurrent(@Query("lat")int lat,
+                                    @Query("lon")int lon,
+                                    @Query("appid")String Api_key,
+                                    @Query("units")String unit);
 
     @GET("/onecall")
     public Call<OneCall> getOneCall(@Query("lat")Double lat,

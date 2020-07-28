@@ -11,5 +11,17 @@
         android:id="@+id/b123"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="500dp"
+        android:text="Request"
         android:onClick="123"/>
+
+    <TextView
+        android:id="@+id/temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="@string/temp_PH"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"/>
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package com.lffq.wapper.ui.home;
 
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -14,37 +16,37 @@ import retrofit2.Response;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private String key = "e54d7937d6b33fe4b72b8ecbaf29c10b";
+    private MutableLiveData<Current> currentMutableLiveData;
 
     public HomeViewModel() {
-        //mText = new MutableLiveData<>();
-        //mText.setValue("This is home fragment");
+
 
         NetworkService.getInstance()
                 .getJSONApi()
-                .getCurrent()
+                .getCurrent(55, 37, key, "metric")
                 .enqueue(new Callback<Current>() {
                     @Override
                     public void onResponse(@NonNull Call<Current> call, @NonNull Response<Current> response) {
                         Current post = response.body();
 
-                        //textView.append(post.getId() + "\n");
-                        //textView.append(post.getUserId() + "\n");
-                        //textView.append(post.getTitle() + "\n");
-                        //textView.append(post.getBody() + "\n");
+                        currentMutableLiveData = new MutableLiveData<>();
+                        currentMutableLiveData.setValue(post);
+
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<Current> call, @NonNull Throwable t) {
 
-                        //textView.append("Error occurred while getting request!");
+                        //Error occurred while getting request!
                         t.printStackTrace();
                     }
                 });
 
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<Current> getCurrent() {
+        return currentMutableLiveData;
     }
+
 }
