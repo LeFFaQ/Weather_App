@@ -1,9 +1,9 @@
 package com.lffq.wapper.ui.home;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,29 +11,41 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.lffq.wapper.MainActivity;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.lffq.wapper.R;
-import com.lffq.wapper.SplashActivity;
-import com.lffq.wapper.network.NetworkService;
 import com.lffq.wapper.network.models.current.Current;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
+import java.util.concurrent.atomic.AtomicMarkableReference;
+
+import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private String key = "e54d7937d6b33fe4b72b8ecbaf29c10b";
-
-    SharedPreferences sPrefs;
 
     TextView temp;
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            //Restore the fragment's state here
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //Save the fragment's state here
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,14 +58,25 @@ public class HomeFragment extends Fragment {
         Button btn = v.findViewById(R.id.b123);
         btn.setOnClickListener(this::onClick);
 
-        new Handler().postDelayed(() -> homeViewModel.getCurrent().observe(getViewLifecycleOwner(), current -> {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
 
-            temp.setText(current.getMain().getTemp().toString());
+                homeViewModel.getCurrent().observe(getViewLifecycleOwner(), new Observer<Current>() {
+                    @Override
+                    public void onChanged(Current current) {
+                        Log.d(TAG, "onChanged: " + current.getMain().getTemp().toString());
+                        temp.setText(current.getMain().getTemp().toString());
+                    }
 
-        }),2000);
+                });
+            }
+        }, 1000);
 
         return v;
     }
+
+
 
     public void onClick(View v) {
         switch (v.getId()) {

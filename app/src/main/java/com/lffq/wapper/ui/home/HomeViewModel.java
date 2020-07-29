@@ -17,10 +17,9 @@ import retrofit2.Response;
 public class HomeViewModel extends ViewModel {
 
     private String key = "e54d7937d6b33fe4b72b8ecbaf29c10b";
-    private MutableLiveData<Current> currentMutableLiveData;
+    final MutableLiveData<Current> currentMutableLiveData = new MutableLiveData<>();
 
-    public HomeViewModel() {
-
+    public LiveData<Current> getCurrent() {
 
         NetworkService.getInstance()
                 .getJSONApi()
@@ -30,8 +29,8 @@ public class HomeViewModel extends ViewModel {
                     public void onResponse(@NonNull Call<Current> call, @NonNull Response<Current> response) {
                         Current post = response.body();
 
-                        currentMutableLiveData = new MutableLiveData<>();
-                        currentMutableLiveData.setValue(post);
+                        //currentMutableLiveData = new MutableLiveData<>();
+                        currentMutableLiveData.postValue(post);
 
                     }
 
@@ -43,9 +42,6 @@ public class HomeViewModel extends ViewModel {
                     }
                 });
 
-    }
-
-    public LiveData<Current> getCurrent() {
         return currentMutableLiveData;
     }
 

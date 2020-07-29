@@ -24,4 +24,10 @@
         android:text="@string/temp_PH"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"/>
+
+    <ImageView
+        android:id="@+id/imageph"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

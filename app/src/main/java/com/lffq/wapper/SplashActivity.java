@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.lffq.wapper.network.PicassoDownload;
+
 public class SplashActivity extends AppCompatActivity {
 
 
@@ -16,6 +18,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        PicassoDownload picassoDownload = new PicassoDownload(this);
+        picassoDownload.CallPicasso(Constants.daytimeUri, get(R.id.imageph));
 
         new Handler().postDelayed(new Runnable() {
             @Override
