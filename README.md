@@ -2,7 +2,7 @@
 api provided by OpenWeatherMap (free version)
 
 ## What is implemented?
-- [ ] Current Weather (backend = 50%, UI = 10%)
+- [ ] Current Weather (backend = 60%, UI = 20%)
 - [ ] Forecast Weather (backend = 10%, UI = 0%)
 - [ ] Profile and Settings (backend = 10%, UI = 0%)
 
