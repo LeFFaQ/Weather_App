@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Main{
 
 	@SerializedName("temp")
-	private Double temp;
+	private Float temp;
 
 	@SerializedName("temp_min")
 	private Double tempMin;
@@ -17,16 +17,16 @@ public class Main{
 	private Integer pressure;
 
 	@SerializedName("feels_like")
-	private Double feelsLike;
+	private Float feelsLike;
 
 	@SerializedName("temp_max")
 	private Double tempMax;
 
-	public void setTemp(Double temp){
+	public void setTemp(Float temp){
 		this.temp = temp;
 	}
 
-	public Double getTemp(){
+	public Float getTemp(){
 		return temp;
 	}
 
@@ -54,11 +54,11 @@ public class Main{
 		return pressure;
 	}
 
-	public void setFeelsLike(Double feelsLike){
+	public void setFeelsLike(Float feelsLike){
 		this.feelsLike = feelsLike;
 	}
 
-	public Double getFeelsLike(){
+	public Float getFeelsLike(){
 		return feelsLike;
 	}
 

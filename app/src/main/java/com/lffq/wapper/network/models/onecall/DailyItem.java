@@ -1,7 +1,8 @@
 package com.lffq.wapper.network.models.onecall;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class DailyItem{
 

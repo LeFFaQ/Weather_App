@@ -8,23 +8,41 @@
     android:id="@+id/fragment_1_background">
 
 
-    <Button
-        android:id="@+id/b123"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="500dp"
-        android:text="Request"
-        android:onClick="123"/>
+    <EditText
+        android:id="@+id/etexter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="City name"
+        android:textColorHint="#9C4A386F"
+        android:textSize="20sp"
+        android:textColor="#4A386F"
+        android:fontFamily="@font/neon"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:background="@drawable/search_bcgrnd"/>
 
     <TextView
         android:id="@+id/temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:text="@string/temp_PH"
+        android:textColor="@color/colorPrimaryDark"
         android:fontFamily="@font/neon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"/>
+
+    <TextView
+        android:id="@+id/temp_fl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/temp"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/neon"
+        android:text="@string/temp_PH"
+        android:textColor="@color/colorAccent"
+        android:textSize="25sp" />
+
+
 
 </RelativeLayout>

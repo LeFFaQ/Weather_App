@@ -1,16 +1,15 @@
 package com.lffq.wapper.ui.home;
 
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,18 +21,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.lffq.wapper.R;
 import com.lffq.wapper.network.models.current.Current;
-import com.squareup.picasso.NetworkPolicy;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-
-
-import static android.content.ContentValues.TAG;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
     TextView temp;
+    TextView temp_fl;
     RelativeLayout relativeLayout;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,27 +43,27 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         temp = v.findViewById(R.id.temp);
+        temp_fl = v.findViewById(R.id.temp_fl);
         relativeLayout = v.findViewById(R.id.fragment_1_background);
 
-        /*Picasso.with(getActivity()).load(R.drawable.aftermoon).resize(get).into(new Target(){
+        EditText btn123 = v.findViewById(R.id.etexter);
+        btn123.setOnKeyListener((v1, keyCode, event) -> {
+            if (keyCode==KeyEvent.KEYCODE_ENTER) {
+                homeViewModel.getCurrent(btn123.getText().toString()).observe(getViewLifecycleOwner(), new Observer<Current>() {
+                    @Override
+                    public void onChanged(Current current) {
+                        //Log.d(TAG, "onChanged: " + current.getMain().getTemp().toString());
+                        temp.setText(Math.round(current.getMain().getTemp()) + "˚");
+                        temp_fl.setText(Math.round(current.getMain().getFeelsLike()) + "˚");
+                    }
 
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                relativeLayout.setBackground(new BitmapDrawable(v.getResources(), bitmap));
+                });
+                return true;
             }
 
-            @Override
-            public void onBitmapFailed(final Drawable errorDrawable) {
-                Log.d("TAG", "FAILED");
-            }
-
-            @Override
-            public void onPrepareLoad(final Drawable placeHolderDrawable) {
-                Log.d("TAG", "Prepare Load");
-            }
-        });*/
-        homeViewModel.dating();
-
+            return false;
+        });
+/*
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -77,16 +71,19 @@ public class HomeFragment extends Fragment {
                 homeViewModel.getCurrent().observe(getViewLifecycleOwner(), new Observer<Current>() {
                     @Override
                     public void onChanged(Current current) {
-                        Log.d(TAG, "onChanged: " + current.getMain().getTemp().toString());
-                        temp.setText(current.getMain().getTemp().toString());
+                        //Log.d(TAG, "onChanged: " + current.getMain().getTemp().toString());
+                        temp.setText(Math.round(current.getMain().getTemp()) + "˚");
+                        temp_fl.setText(Math.round(current.getMain().getFeelsLike()) + "˚");
                     }
 
                 });
             }
         }, 1000);
-
+*/
         return v;
     }
+
+
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
