@@ -15,13 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     Fragment mMyFragment;
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        //Save the fragment's instance
-        getSupportFragmentManager().putFragment(outState, "myFragmentName", mMyFragment);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

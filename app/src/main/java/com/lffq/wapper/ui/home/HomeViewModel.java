@@ -1,6 +1,6 @@
 package com.lffq.wapper.ui.home;
 
-import android.widget.TextView;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
@@ -10,9 +10,19 @@ import androidx.lifecycle.ViewModel;
 import com.lffq.wapper.network.NetworkService;
 import com.lffq.wapper.network.models.current.Current;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.ContentValues.TAG;
 
 public class HomeViewModel extends ViewModel {
 
@@ -44,5 +54,12 @@ public class HomeViewModel extends ViewModel {
 
         return currentMutableLiveData;
     }
+
+//    public void getDate() {
+//        String timeStamp = new SimpleDateFormat("HHmmss").format(Calendar.getInstance().getTime());
+//
+//        //if (timeStamp += )
+//        Log.d(TAG, "getDate: " + timeStamp);
+//    }
 
 }
