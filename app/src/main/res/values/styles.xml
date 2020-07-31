@@ -8,4 +8,13 @@
     </style>
 
 
+    <style name="SearchBar">
+        <item name="android:background">@drawable/ic_subtract</item>
+    </style>
+    <style name="BottomNavigation">
+        <item name="android:background">@drawable/ic_subtract180</item>
+        <item name="itemBackground">@color/colorPrimary</item>
+        <item name="itemIconTint">@color/colorAccent</item>
+        <item name="itemTextColor">@color/colorAccent</item>
+    </style>
 </resources>

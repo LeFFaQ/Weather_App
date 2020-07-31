@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Fragment mMyFragment;
 
 
     @Override
@@ -30,10 +29,6 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
-        if (savedInstanceState != null) {
-            //Restore the fragment's instance
-            mMyFragment = getSupportFragmentManager().getFragment(savedInstanceState, "HomeFragment");
     }
 
-    }
 }

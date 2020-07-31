@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">Weather App</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-
-
+    <string name="title_home">Current</string>
+    <string name="title_dashboard">Forecast</string>
+    <string name="title_notifications">Profile</string>
 
     <string name="temp_PH">temp_</string>
+    <string name="search_txt">Enter city</string>
 </resources>
